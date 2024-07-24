@@ -46,28 +46,32 @@ const Login = () => {
             </Helmet>
             <Toaster />
             <section>
-                <div className="w-50 mx-auto mt-5 py-5">
-                    <h2 className='text-capitalize'>Login now!</h2>
-                    <form onSubmit={loginForm.handleSubmit}>
-                        <div className="form-group">
-                            <label htmlFor="email" className='mb-1'>Email:</label>
-                            <input type="email" id='email' value={loginForm.values.email} onBlur={loginForm.handleBlur} onChange={loginForm.handleChange} name='email' className='form-control' />
-                            {loginForm.errors.email && loginForm.touched.email ? <div className='alert alert-danger'>{loginForm.errors.email}</div> : null}
+                <div className="container">
+                    <div className="row">
+                        <div className="w-75 mx-auto mt-5 py-5">
+                            <h2 className='text-capitalize'>Login now!</h2>
+                            <form onSubmit={loginForm.handleSubmit}>
+                                <div className="form-group">
+                                    <label htmlFor="email" className='mb-1'>Email:</label>
+                                    <input type="email" id='email' value={loginForm.values.email} onBlur={loginForm.handleBlur} onChange={loginForm.handleChange} name='email' className='form-control' />
+                                    {loginForm.errors.email && loginForm.touched.email ? <div className='alert alert-danger my-2'>{loginForm.errors.email}</div> : null}
+                                </div>
+                                <div className="form-group mb-2">
+                                    <label htmlFor="password" className='mb-1'>Password:</label>
+                                    <input type="password" id='password' value={loginForm.values.password} onBlur={loginForm.handleBlur} onChange={loginForm.handleChange} name='password' className='form-control' />
+                                    {loginForm.errors.password && loginForm.touched.password ? <div className='alert alert-danger my-2'>{loginForm.errors.password}</div> : null}
+                                </div>
+                                <div className="d-flex align-items-center justify-content-between flex-wrap">
+                                    <button className='btn bg-main text-capitalize text-white mb-4' type='submit'
+                                        disabled={!(loginForm.isValid && loginForm.dirty && !loader)}>
+                                        {loader ? <i className='fa fa-spinner fa-spin'></i> : "login"}
+                                    </button>
+                                    <Link className='btn btn-info text-white mb-4' to={'/forgetpw'}>Forgot password?</Link>
+                                    <button className='btn bg-danger text-capitalize text-white mb-4' type='reset' onClick={resetFormValues}>clear form</button>
+                                </div>
+                            </form>
                         </div>
-                        <div className="form-group mb-2">
-                            <label htmlFor="password" className='mb-1'>Password:</label>
-                            <input type="password" id='password' value={loginForm.values.password} onBlur={loginForm.handleBlur} onChange={loginForm.handleChange} name='password' className='form-control' />
-                            {loginForm.errors.password && loginForm.touched.password ? <div className='alert alert-danger'>{loginForm.errors.password}</div> : null}
-                        </div>
-                        <div className="d-flex align-items-center justify-content-between">
-                            <button className='btn bg-main text-capitalize text-white' type='submit'
-                                disabled={!(loginForm.isValid && loginForm.dirty && !loader)}>
-                                {loader ? <i className='fa fa-spinner fa-spin'></i> : "login"}
-                            </button>
-                            <Link className='btn btn-info text-white' to={'/forgetpw'}>Forgot password?</Link>
-                            <button className='btn bg-danger text-capitalize text-white' type='reset' onClick={resetFormValues}>clear form</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </section>
         </>

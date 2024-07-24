@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import styles from './ProductDetails.module.css'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios';
 import ProductPriceRating from 'Components/ProductPriceRating/ProductPriceRating';
@@ -55,7 +54,7 @@ const ProductDetails = () => {
         navigate('/');
     }
     let settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 1000,
         slidesToShow: 1,
@@ -72,7 +71,7 @@ const ProductDetails = () => {
                 <title>{productDetails.title}</title>
             </Helmet>
             <Toaster />
-            {isLoading ? <Loader /> : <section>
+            {isLoading ? <Loader /> : <section className='mt-5'>
                 <div className="container py-5 position-relative">
                     <div className='position-absolute py-5 top-0 end-0'>
                         <i className="fa-solid fa-xmark fs-1 cursor-pointer" onClick={closeProductDetails}></i>
@@ -80,7 +79,7 @@ const ProductDetails = () => {
                     <div className="row align-items-center">
                         <div className="col-md-4">
                             <Slider {...settings}>
-                                {productDetails?.images?.map((image) => <img alt={`product image title`} key={image[image.length]} src= {image} className='w-100'/>)}
+                                {productDetails?.images?.map((image) => <img alt={`product image title`} key={image[image.length]} src= {image} className='w-100 mb-5'/>)}
                             </Slider>
                         </div>
                         <div className="col-md-8">

@@ -17,19 +17,19 @@ const Mainslider = () => {
         <>
             <section>
                 <div className="container py-5 mt-5">
-                <div className="row">
-                <div className="col-md-8 p-0">
-                    <Slider {...settings}>
-                        <img src={img1} alt="" />
-                        <img src={img2} alt="" />
-                        <img src={img3} alt="" />
-                    </Slider>
-                </div>
-                <div className="col-md-4 p-0">
-                    <img src={img1} className='w-100' alt="" />
-                    <img src={img3} className='w-100' alt="" />
-                </div>
-            </div>
+                    <div className="row">
+                        <div className="col-md-8 p-0">
+                            <Slider {...settings}>
+                                <img src={img1} alt="" />
+                                <img src={img2} alt="" />
+                                <img src={img3} alt="" />
+                            </Slider>
+                        </div>
+                        <div className="col-md-4 p-0">
+                            <img src={img1} className='w-100 my-sm-4 my-md-0 my-lg-0' alt="" />
+                            <img src={img3} className='w-100 my-sm-4 my-md-0 my-lg-0' alt="" />
+                        </div>
+                    </div>
                 </div>
             </section>
         </>

@@ -44,7 +44,7 @@ const Checkout = () => {
     }
     return (
         <>
-        <section className='container'>
+        <section className='container global-margin'>
             <div className='bg-main-light p-3 w-75 mx-auto my-3'>
                 <h2 className='text-capitalize'>shipping address:</h2>
                 <form onSubmit={formik.handleSubmit}>

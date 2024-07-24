@@ -72,7 +72,7 @@ const Cart = () => {
             </Helmet>
             <Toaster />
             {isLoading ? <Loader /> :
-                !isEmpty ? <section className='bg-main-light p-5 container mt-5'>
+                !isEmpty ? <section className={`${styles.cart} bg-main-light p-5 container`}>
                     <div className="d-flex align-items-center justify-content-between">
                         <div className="left">
                             <h3 className='text-capitalize mb-2'>your shopping cart:</h3>
@@ -83,7 +83,7 @@ const Cart = () => {
                             <button onClick={clearCart} className='btn btn-outline-danger text-capitalize'>delete all cart items</button>
                         </div>
                     </div>
-                    {cart?.data?.products.map((product) => <div className='row py-1 border-bottom' key={product.product.id}>
+                    {cart?.data?.products.map((product) => <div className='row py-1 border-bottom mb-3' key={product.product.id}>
                         <div className="col-md-1">
                             <img src={product.product.imageCover} alt={product.product.title} className='w-100' />
                         </div>

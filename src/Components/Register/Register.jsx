@@ -9,13 +9,13 @@ import { TokenContext } from 'Context/Token';
 import { Helmet } from 'react-helmet';
 const Register = () => {
     let navigate = useNavigate();
-    let {setToken} = useContext(TokenContext);
+    let { setToken } = useContext(TokenContext);
     const [loader, setLoader] = useState(false);
     async function callRegisterAPI(userData) {
         setLoader(true);
         await axios.post(`https://ecommerce.routemisr.com/api/v1/auth/signup`, userData).then((response) => {
             setLoader(false);
-            localStorage.setItem("UserToken",response.data.token);
+            localStorage.setItem("UserToken", response.data.token);
             setToken(response.data.token);
             navigate("/login");
         }).catch((error) => {
@@ -54,44 +54,49 @@ const Register = () => {
             </Helmet>
             <Toaster />
             <section>
-                <div className="w-50 mx-auto my-4">
-                    <h2 className='text-capitalize'>register now!</h2>
-                    <form onSubmit={registerForm.handleSubmit}>
-                        <div className="form-group">
-                            <label htmlFor="fullName" className='mb-1'>Full Name:</label>
-                            <input type="text" id='fullName' value={registerForm.values.name} onBlur={registerForm.handleBlur} onChange={registerForm.handleChange} name='name' className='form-control' />
-                            {registerForm.errors.name && registerForm.touched.name ? <div className='alert alert-danger'>{registerForm.errors.name}</div> : null}
+                <div className="container mt-5">
+                    <div className="row">
+                        <div className="w-75 mx-auto my-4">
+                            <h2 className='text-capitalize'>register now!</h2>
+                            <form onSubmit={registerForm.handleSubmit}>
+                                <div className="form-group">
+                                    <label htmlFor="fullName" className='mb-1'>Full Name:</label>
+                                    <input type="text" id='fullName' value={registerForm.values.name} onBlur={registerForm.handleBlur} onChange={registerForm.handleChange} name='name' className='form-control' />
+                                    {registerForm.errors.name && registerForm.touched.name ? <div className='alert alert-danger'>{registerForm.errors.name}</div> : null}
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="email" className='mb-1'>Email:</label>
+                                    <input type="email" id='email' value={registerForm.values.email} onBlur={registerForm.handleBlur} onChange={registerForm.handleChange} name='email' className='form-control' />
+                                    {registerForm.errors.email && registerForm.touched.email ? <div className='alert alert-danger'>{registerForm.errors.email}</div> : null}
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="password" className='mb-1'>Password:</label>
+                                    <input type="password" id='password' value={registerForm.values.password} onBlur={registerForm.handleBlur} onChange={registerForm.handleChange} name='password' className='form-control' />
+                                    {registerForm.errors.password && registerForm.touched.password ? <div className='alert alert-danger'>{registerForm.errors.password}</div> : null}
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="rePassword" className='mb-1'>Re-enter Password:</label>
+                                    <input type="password" id='rePassword' value={registerForm.values.rePassword} onBlur={registerForm.handleBlur} onChange={registerForm.handleChange} name='rePassword' className='form-control' />
+                                    {registerForm.errors.rePassword && registerForm.touched.rePassword ? <div className='alert alert-danger'>{registerForm.errors.rePassword}</div> : null}
+                                </div>
+                                <div className="form-group mb-2">
+                                    <label htmlFor="mobile" className='mb-1'>Mobile Number:</label>
+                                    <input type="tel" id='mobile' value={registerForm.values.phone} onBlur={registerForm.handleBlur} onChange={registerForm.handleChange} name='phone' className='form-control' />
+                                    {registerForm.errors.phone && registerForm.touched.phone ? <div className='alert alert-danger'>{registerForm.errors.phone}</div> : null}
+                                </div>
+                                <div className="d-flex align-items-center justify-content-between flex-wrap">
+                                    <button className='btn bg-main text-capitalize text-white mb-3' type='submit'
+                                        disabled={!(registerForm.isValid && registerForm.dirty && !loader)}
+                                    >
+                                        {loader ? <i className='fa fa-spinner fa-spin'></i> : "register"}
+                                    </button>
+                                    <button className='btn bg-danger text-capitalize text-white' type='reset' onClick={resetFormValues}>clear form</button>
+                                </div>
+                            </form>
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="email" className='mb-1'>Email:</label>
-                            <input type="email" id='email' value={registerForm.values.email} onBlur={registerForm.handleBlur} onChange={registerForm.handleChange} name='email' className='form-control' />
-                            {registerForm.errors.email && registerForm.touched.email ? <div className='alert alert-danger'>{registerForm.errors.email}</div> : null}
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password" className='mb-1'>Password:</label>
-                            <input type="password" id='password' value={registerForm.values.password} onBlur={registerForm.handleBlur} onChange={registerForm.handleChange} name='password' className='form-control' />
-                            {registerForm.errors.password && registerForm.touched.password ? <div className='alert alert-danger'>{registerForm.errors.password}</div> : null}
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="rePassword" className='mb-1'>Re-enter Password:</label>
-                            <input type="password" id='rePassword' value={registerForm.values.rePassword} onBlur={registerForm.handleBlur} onChange={registerForm.handleChange} name='rePassword' className='form-control' />
-                            {registerForm.errors.rePassword && registerForm.touched.rePassword ? <div className='alert alert-danger'>{registerForm.errors.rePassword}</div> : null}
-                        </div>
-                        <div className="form-group mb-2">
-                            <label htmlFor="mobile" className='mb-1'>Mobile Number:</label>
-                            <input type="tel" id='mobile' value={registerForm.values.phone} onBlur={registerForm.handleBlur} onChange={registerForm.handleChange} name='phone' className='form-control' />
-                            {registerForm.errors.phone && registerForm.touched.phone ? <div className='alert alert-danger'>{registerForm.errors.phone}</div> : null}
-                        </div>
-                        <div className="d-flex align-items-center justify-content-between">
-                            <button className='btn bg-main text-capitalize text-white' type='submit'
-                            disabled = {!(registerForm.isValid && registerForm.dirty && !loader)}
-                            >
-                                {loader ? <i className='fa fa-spinner fa-spin'></i> : "register"}
-                            </button>
-                            <button className='btn bg-danger text-capitalize text-white' type='reset' onClick={resetFormValues}>clear form</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
+
             </section>
         </>
     )

@@ -57,7 +57,7 @@ const Products = () => {
                     <div className="container">
                         <div className="row py-5 gy-5 mt-5">
                             <h2 className='text-capitalize'>featured products</h2>
-                            {data?.data?.data?.map((product) => <div key={product._id} className='col-md-2'>
+                            {data?.data?.data?.map((product) => <div key={product._id} className='col-sm col-md-3 col-lg-2'>
                                 <div className='product cursor-pointer p-3'>
                                     <Link to={`productdetails/${product._id}`}>
                                         <img src={product.imageCover} className='w-100' alt="" />

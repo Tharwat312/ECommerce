@@ -17,7 +17,7 @@ const Categories = () => {
                     <h1 className='text-center text-capitalize py-5 mt-5'>shop by popular brands now</h1>
                     <div className="container">
                         <div className="row py-5 gy-5">
-                            {data?.data?.data.map((category) => <div className='col-md-3' key={category._id}>
+                            {data?.data?.data.map((category) => <div className='col-sm col-md-6 col-lg-3' key={category._id}>
                                 <div className={`card cursor-pointer ${styles.card}`}>
                                     <div className="d-flex align-items-center justify-content-center flex-column">
                                         <img src={category.image} alt={`${category.name} category`} className='w-100' />

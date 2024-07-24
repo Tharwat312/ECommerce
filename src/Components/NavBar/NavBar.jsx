@@ -16,7 +16,7 @@ const NavBar = () => {
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
-                <div className="container-fluid">
+                <div className="container">
                     <Link className="navbar-brand" to={"/"}>
                         <img src={logo} alt="main site logo" />
                     </Link>
@@ -29,14 +29,6 @@ const NavBar = () => {
                                 <Link className="nav-link active" aria-current="page" to={"/"}>Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link position-relative" to={"cart"}>Cart
-                                    <i className="fa-solid fa-cart-shopping text-main"></i>
-                                    <span className='badge text-main position-absolute top-0 start-100 translate-middle-x'>
-                                        {numCartItems}
-                                    </span>
-                                </Link>
-                            </li>
-                            <li className="nav-item">
                                 <Link className="nav-link" to={"products"}>Products</Link>
                             </li>
                             <li className="nav-item">
@@ -45,9 +37,17 @@ const NavBar = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to={"brands"}>Brands</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link position-relative" to={"cart"}>Cart
+                                    <i className="fa-solid fa-cart-shopping text-main"></i>
+                                    <span className='badge text-main position-absolute top-0 start-100 translate-middle-x'>
+                                        {numCartItems}
+                                    </span>
+                                </Link>
+                            </li>
                         </ul>) : null}
                         <ul className='navbar-nav ms-auto'>
-                            <li className='align-self-center fs-5'>
+                            <li className='align-self-start fs-5'>
                                 <i className='fa-brands fa-instagram p-1 cursor-pointer'></i>
                                 <i className='fa-brands fa-facebook p-1 cursor-pointer'></i>
                                 <i className='fa-brands fa-tiktok p-1 cursor-pointer'></i>

@@ -66,10 +66,10 @@ const Wishlist = () => {
                     <img src={emptyWishlist} alt='empty wishlist image' />
                 </section> :
                     <>
-                        <section className='bg-main-light p-3 container mt-5'>
+                        <section className={`${styles.Wishlist} bg-main-light p-3 container`}>
                             <h3 className='text-capitalize mb-2'>your wishList:</h3>
                             <h4 className='h6 text-capitalize text-main fw-bold mb-1'>total wishlist items: {wishList.count}</h4>
-                            {wishList?.data?.map((product) => <div key={product._id} className='row py-2 border-bottom'>
+                            {wishList?.data?.map((product) => <div key={product._id} className='row py-2 border-bottom mb-2'>
                                 <div className="col-md-1">
                                     <img src={product.imageCover} alt={`${product.title} image`} className='w-100' />
                                 </div>
